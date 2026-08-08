@@ -1,0 +1,282 @@
+/* style.css */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#e3eae3;
+    color:#d5a130;
+}
+
+/* Navigation */
+
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:#2e7d32;
+    padding:15px 40px;
+    z-index:1000;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav h2{
+    color:white;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+}
+
+nav ul li{
+    margin-left:25px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#ffeb3b;
+}
+
+/* Home */
+
+#home{
+    height:100vh;
+    background:url("images/farm.jpg") center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.home-content{
+    background:rgba(201, 12, 12, 0.5);
+    padding:30px;
+    border-radius:10px;
+}
+
+.home-content h1{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.home-content p{
+    font-size:20px;
+    margin-bottom:20px;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    background:#4CAF50;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#2e7d32;
+}
+
+/* About */
+
+#about{
+    padding:80px 10%;
+    text-align:center;
+}
+
+#about h2{
+    color:#2e7d32;
+    font-size:36px;
+    margin-bottom:20px;
+}
+
+#about p{
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* Crops */
+
+#crops{
+    padding:80px 10%;
+    text-align:center;
+    background:#eef8ee;
+}
+
+#crops h2{
+    color:#2e7d32;
+    font-size:36px;
+    margin-bottom:40px;
+}
+
+.crop-box{
+    display:inline-block;
+    width:260px;
+    background:white;
+    margin:15px;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+    transition:.4s;
+}
+
+.crop-box:hover{
+    transform:translateY(-10px);
+}
+
+.crop-box img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.crop-box h3{
+    margin:15px 0;
+    color:#2e7d32;
+}
+
+.crop-box p{
+    padding:0 15px 20px;
+    line-height:1.5;
+}
+
+    /* Dashboard */
+
+#dashboard{
+    padding:80px 10%;
+    background:#eef8ee;
+    text-align:center;
+}
+
+#dashboard h2{
+    color:#2e7d32;
+    margin-bottom:40px;
+}
+
+.dashboard-container{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.dashboard-card{
+    width:220px;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.dashboard-card:hover{
+    transform:translateY(-8px);
+}
+
+.dashboard-card h3{
+    font-size:38px;
+    color:#2e7d32;
+    margin-bottom:10px;
+}
+
+.dashboard-card p{
+    font-size:18px;
+    color:#d41212;
+}
+
+
+/* Contact */
+
+#contact{
+    padding:80px 10%;
+    text-align:center;
+}
+
+#contact h2{
+    color:#2e7d32;
+    margin-bottom:20px;
+}
+
+form{
+    max-width:500px;
+    margin:auto;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    padding:12px 30px;
+    background:#2e7d32;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#1b5e20;
+}
+
+/* Footer */
+
+footer{
+    background:#2e7d32;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+    }
+
+    nav ul{
+        flex-direction:column;
+        text-align:center;
+        margin-top:10px;
+    }
+
+    nav ul li{
+        margin:10px 0;
+    }
+
+    .home-content h1{
+        font-size:35px;
+    }
+
+    .crop-box{
+        width:90%;
+    }
+}
