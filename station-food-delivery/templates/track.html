@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Track {{ order.order_code }}</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><header class="nav"><div class="brand">🚉 Station<span>Eats</span></div><a href="{{ url_for('index') }}" class="nav-link">New Order</a></header>
+<main class="container narrow"><div class="track-head"><p class="eyebrow">ORDER TRACKING</p><h1>{{ order.order_code }}</h1><span class="status">{{ order.status }}</span></div>
+<div class="route-card"><div><small>FROM</small><strong>{{ order.source_station }}</strong></div><div class="arrow">→</div><div><small>DELIVER TO</small><strong>{{ order.destination_station }}</strong></div></div>
+<div class="summary"><div><span>Passenger</span><b>{{ order.customer_name }}</b></div><div><span>Food</span><b>{{ order.food_name }} × {{ order.quantity }}</b></div><div><span>Coach / Seat</span><b>{{ order.coach_seat }}</b></div><div><span>Total</span><b>₹{{ order.amount }}</b></div></div>
+<div class="timeline">{% set steps=["Order Confirmed","Preparing Food","At Source Station","In Transit","Reached Destination Station","Delivered"] %}{% for step in steps %}<div class="timeline-item {% if steps.index(step) <= steps.index(order.status) %}done{% endif %}"><span>{{ "✓" if steps.index(step) <= steps.index(order.status) else steps.index(step)+1 }}</span><div><b>{{ step }}</b><small>{{ "Completed" if steps.index(step) <= steps.index(order.status) else "Waiting" }}</small></div></div>{% endfor %}</div>
+<p class="muted">Last updated: {{ order.updated_at }}</p></main></body></html>
