@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StationEats | Station Food Delivery</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="nav"><div class="brand">🚉 Station<span>Eats</span></div><a href="{{ url_for('admin') }}" class="nav-link">Delivery Dashboard</a></header>
+<section class="hero"><div>
+<p class="eyebrow">FOOD DELIVERY • STATION TO STATION</p>
+<h1>Fresh food waiting at your <span>next station.</span></h1>
+<p class="hero-text">Order before you reach the station. We prepare, route and deliver your meal at the destination station.</p>
+<div class="route-pill">📍 Source Station <b>→</b> 🚉 Destination Station</div>
+</div><div class="hero-card"><div class="train">🚆</div><h3>Simple 4-step delivery</h3><p>Order → Prepare → Transport → Deliver</p></div></section>
+{% with messages = get_flashed_messages(with_categories=true) %}{% for category, message in messages %}<div class="alert {{ category }}">{{ message }}</div>{% endfor %}{% endwith %}
+<main class="container">
+<div class="section-title"><div><p class="eyebrow">NEW ORDER</p><h2>Plan your station delivery</h2></div><span class="badge">Live Demo</span></div>
+<form action="{{ url_for('create_order') }}" method="post" class="order-form">
+<div class="grid two"><label>Passenger name<input name="customer_name" placeholder="Enter your name" required></label><label>Contact number<input name="contact" placeholder="10-digit mobile number" pattern="[0-9]{10}" required></label></div>
+<div class="grid two"><label>Boarding / source station<select name="source_station" required><option value="">Select source station</option>{% for code,name,state in stations %}<option value="{{ code }}">{{ name }} ({{ code }})</option>{% endfor %}</select></label><label>Delivery / destination station<select name="destination_station" required><option value="">Select destination station</option>{% for code,name,state in stations %}<option value="{{ code }}">{{ name }} ({{ code }})</option>{% endfor %}</select></label></div>
+<div class="grid two"><label>Coach / seat / pickup reference<input name="coach_seat" placeholder="Example: S3 - 42" required></label><label>Food item<select name="food" id="food" required><option value="">Select food</option>{% for id,name,price in foods %}<option value="{{ id }}" data-price="{{ price }}">{{ name }} — ₹{{ price }}</option>{% endfor %}</select></label></div>
+<div class="grid three"><label>Quantity<input id="quantity" type="number" name="quantity" min="1" max="10" value="1" required></label><label>Payment<select name="payment_mode"><option>Cash on Delivery</option><option>UPI (Demo)</option><option>Card (Demo)</option></select></label><div class="total-box">Estimated total<strong id="total">₹0</strong></div></div>
+<button class="primary" type="submit">🚀 Place Station Delivery Order</button>
+</form>
+<section class="how"><div><span>01</span><h3>Order</h3><p>Choose source and destination stations.</p></div><div><span>02</span><h3>Prepare</h3><p>Partner vendor prepares your food.</p></div><div><span>03</span><h3>Transport</h3><p>Delivery partner carries the package.</p></div><div><span>04</span><h3>Deliver</h3><p>Passenger receives food at destination.</p></div></section>
+</main><script src="{{ url_for('static', filename='app.js') }}"></script>
+</body></html>
